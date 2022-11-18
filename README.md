@@ -1,5 +1,13 @@
 # cordova-plugin-lottie-splashscreen
 
+Peter 修改 2022/11/18
+1. android 啟動時會 crash, 主要是 callback event 會發生找不到 webview 的問題, 這邊我們先把 callback event 註解掉, 之後再來處理
+2. ios 讀取 LottieFadeOutDuration 為秒數, but android 需要使用毫秒, 所以這邊我們把讀取的值 * 1000 改為毫秒
+3. ios 啟動時會 中間會產生一塊矩形的圖塊, 有 workaround 處理方法, 就是 讓下面那行移除掉 (修改 plugin.xml)
+    <param name="onload" value="true" />
+    https://github.com/timbru31/cordova-plugin-lottie-splashscreen/issues/453
+
+
 [![Run a security audit](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Run%20a%20security%20audit/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Run+a+security+audit%22)
 [![Linting](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Linting/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3ALinting)
 [![Smoke test on Ubuntu](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/workflows/Smoke%20test%20on%20Ubuntu/badge.svg)](https://github.com/timbru31/cordova-plugin-lottie-splashscreen/actions?query=workflow%3A%22Smoke+test+on+Ubuntu%22)

@@ -273,7 +273,8 @@ class LottieSplashScreen : CordovaPlugin() {
         animationView.addAnimatorListener(
             object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
-                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
+                    // Peter modify
+                    // (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationStart'))") { }
                 }
 
                 override fun onAnimationEnd(animation: Animator) {
@@ -289,7 +290,8 @@ class LottieSplashScreen : CordovaPlugin() {
                 }
 
                 override fun onAnimationCancel(animation: Animator) {
-                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
+                    // Peter modify
+                    // (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationCancel'))") { }
                 }
 
                 override fun onAnimationRepeat(animation: Animator) {
@@ -312,7 +314,8 @@ class LottieSplashScreen : CordovaPlugin() {
     }
 
     private fun dismissDialog(callbackContext: CallbackContext? = null) {
-        val fadeDuration = preferences.getInteger("LottieFadeOutDuration", 0)
+        val fadeDurationTmp = preferences.getDouble("LottieFadeOutDuration", 0.0) // Peter modify
+        val fadeDuration = fadeDurationTmp * 1000  // Peter modify
         when {
             fadeDuration > 0 -> {
                 val fadeOut = AlphaAnimation(1f, 0f)
