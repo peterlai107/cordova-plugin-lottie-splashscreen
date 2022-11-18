@@ -278,7 +278,8 @@ class LottieSplashScreen : CordovaPlugin() {
                 }
 
                 override fun onAnimationEnd(animation: Animator) {
-                    (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
+                    // Peter modify
+                    // (webView.getView() as WebView).evaluateJavascript("document.dispatchEvent(new Event('lottieAnimationEnd'))") { }
                     val hideAfterAnimationDone = preferences.getBoolean(
                         "LottieHideAfterAnimationEnd",
                         false
